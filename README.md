@@ -1,6 +1,8 @@
 
-# Project Title
-Create-ec2-using-cloudformation .
+# Create-Ec2-Using-Cloudformation
+
+![image](https://github.com/AlaaZahran/create-ec2-using-cloudformation/assets/46306526/23dfbc5c-ca3a-44f0-a432-8cb402c274d9)
+ 
 
 # Description
 
@@ -51,6 +53,5 @@ To access the EC2 instance, you can use SSH with the key pair specified in the K
 ```
 ssh -i alaa-ec2.pem ec2@ec2_ip
 ```
-# Digram
 
-![image](https://github.com/AlaaZahran/create-ec2-using-cloudformation/assets/46306526/23dfbc5c-ca3a-44f0-a432-8cb402c274d9)
+
