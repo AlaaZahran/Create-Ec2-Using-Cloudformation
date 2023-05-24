@@ -21,6 +21,7 @@ Resources:
       CidrBlock: 192.168.101.32/28
       MapPublicIpOnLaunch: false
       VpcId: !Ref VPC
+      
 #InternetGateway
   InternetGateway:
     Type: "AWS::EC2::InternetGateway"
@@ -28,12 +29,14 @@ Resources:
       Tags:
         - Key: "Name"
           Value: "My Internet Gateway"
+          
 #VPCGatewayAttachment
   VPCGatewayAttachment:
     Type: "AWS::EC2::VPCGatewayAttachment"
     Properties:
       VpcId: !Ref VPC
       InternetGatewayId: !Ref InternetGateway
+      
 #PublicRouteTable
   PublicRouteTable:
     Type: "AWS::EC2::RouteTable"
@@ -42,14 +45,7 @@ Resources:
       Tags:
         - Key: "Name"
           Value: "My Public Route Table"
-#PrivateRouteTable
-  PrivateRouteTable:
-    Type: "AWS::EC2::RouteTable"
-    Properties:
-      VpcId: !Ref VPC
-      Tags:
-        - Key: "Name"
-          Value: "My Private Route Table"
+
 #PublicRoute
   PublicRoute:
     Type: "AWS::EC2::Route"
@@ -58,17 +54,16 @@ Resources:
       RouteTableId: !Ref PublicRouteTable
       DestinationCidrBlock: "0.0.0.0/0"
       GatewayId: !Ref InternetGateway
+      
 #PublicSubnetRouteTableAssociation
   PublicSubnetRouteTableAssociation:
     Type: "AWS::EC2::SubnetRouteTableAssociation"
     Properties:
       SubnetId: !Ref PublicSubnetA
       RouteTableId: !Ref PublicRouteTable
-  PrivateSubnetRouteTableAssociation:
-    Type: "AWS::EC2::SubnetRouteTableAssociation"
-    Properties:
-      SubnetId: !Ref PrivateSubnetB
-      RouteTableId: !Ref PrivateRouteTable
+      
+  
+      
 #ec2 security group
   InstanceSecurityGroup:
     Type: AWS::EC2::SecurityGroup
@@ -84,6 +79,7 @@ Resources:
           FromPort: 80
           ToPort: 80
           CidrIp: 0.0.0.0/0
+          
 #ec2 instance
   WebAppInstance:
     Type: AWS::EC2::Instance
