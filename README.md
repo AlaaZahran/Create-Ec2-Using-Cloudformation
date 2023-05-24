@@ -20,11 +20,10 @@ This CloudFormation template creates an EC2 instance with a VPC, private and pub
 
 6- Public route table
 
-7- Private route table
+7- Security group
 
-8- Security group
+8- EC2 instance
 
-9- EC2 instance
 
 # Prerequisites
 Before you begin, you will need the following:
